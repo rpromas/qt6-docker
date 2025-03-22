@@ -1,6 +1,6 @@
 # Image: stateoftheartio/qt6:6.8-gcc-aqt
 
-FROM ubuntu:20.04
+FROM debian:bookworm
 MAINTAINER State Of The Art <docker@state-of-the-art.io> (@stateoftheartio)
 
 # PIP requirement like "aqtinstall==2.0.6" or url with egg file
@@ -21,7 +21,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     AQT_VERSION=${AQT_VERSION} \
     QT_PATH=${QT_PATH} \
     QT_GCC=${QT_PATH}/${QT_VERSION}/gcc_64 \
-    PATH=${QT_PATH}/Tools/CMake/bin:${QT_PATH}/Tools/Ninja:${QT_PATH}/${QT_VERSION}/gcc_64/bin:$PATH
+    PATH=${QT_PATH}/bin:${QT_PATH}:${QT_PATH}/${QT_VERSION}/gcc_64/bin:$PATH
 
 COPY get_qt.sh get_linuxdeploy.sh install_packages.sh /tmp/
 
@@ -34,12 +34,12 @@ RUN /tmp/get_linuxdeploy.sh
 # Install the required packages
 RUN /tmp/install_packages.sh
 
-# Reconfigure locale
-RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
+# # Reconfigure locale
+# RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 
 # Add group & user + sudo
-RUN groupadd -r user && useradd --create-home --gid user user && echo 'user ALL=NOPASSWD: ALL' > /etc/sudoers.d/user
+# RUN groupadd -r user && useradd --create-home --gid user user && echo 'user ALL=NOPASSWD: ALL' > /etc/sudoers.d/user
 
-USER user
-WORKDIR /home/user
-ENV HOME /home/user
+# USER user
+# WORKDIR /home/user
+# ENV HOME /home/user

@@ -23,7 +23,7 @@ echo '--> Install the required packages to install Qt'
 echo
 
 apt install -y git python3-pip libglib2.0-0
-pip3 install --no-cache-dir "$AQT_VERSION"
+pip3 install --no-cache-dir --break-system-packages "$AQT_VERSION"
 
 echo
 echo '--> Download & install the Qt library using aqt'
@@ -33,7 +33,7 @@ aqt install-qt -O "$QT_PATH" linux desktop "$QT_VERSION" linux_gcc_64
 aqt install-tool -O "$QT_PATH" linux desktop tools_cmake
 aqt install-tool -O "$QT_PATH" linux desktop tools_ninja
 
-pip3 freeze | xargs pip3 uninstall -y
+pip3 freeze | xargs pip3 uninstall -y --break-system-packages
 
 echo
 echo '--> Restore the packages list to the original state'
