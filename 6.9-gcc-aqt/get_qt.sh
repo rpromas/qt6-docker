@@ -29,7 +29,7 @@ echo
 echo '--> Download & install the Qt library using aqt'
 echo
 
-aqt install-qt -O "$QT_PATH" linux desktop "$QT_VERSION" linux_gcc_64
+aqt install-qt -O "$QT_PATH" linux desktop "$QT_VERSION" linux_gcc_64 --modules qtwebsockets qthttpserver 
 aqt install-tool -O "$QT_PATH" linux desktop tools_cmake
 aqt install-tool -O "$QT_PATH" linux desktop tools_ninja
 

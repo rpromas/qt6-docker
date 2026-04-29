@@ -34,6 +34,10 @@ RUN /tmp/install_packages.sh
 # Get linuxdeploy and build it
 RUN /tmp/get_linuxdeploy.sh
 
+# Get jwt-cpp and build it
+COPY get_jwt.sh /tmp/
+RUN /tmp/get_jwt.sh
+
 # # Reconfigure locale
 # RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 
