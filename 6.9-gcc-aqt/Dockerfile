@@ -13,7 +13,7 @@ ARG LINUXDEPLOY_COMMIT=f6730d2fbacd9005dd9640ea517771f7597eec73
 ARG LINUXDEPLOY_QT_COMMIT=70b466586a3a311d0319ff687c3d14bbd73373db
 ARG QT_PATH=/opt/Qt
 
-ARG ADDITIONAL_PACKAGES="sudo git openssh-client ca-certificates build-essential curl python3 locales patchelf cmake ninja-build"
+ARG ADDITIONAL_PACKAGES="sudo git openssh-client ca-certificates build-essential curl python3 locales patchelf cmake ninja-build pkg-config"
 
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true \
